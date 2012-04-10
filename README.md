@@ -10,9 +10,11 @@ Install
 Usage
 -----
 Add this to your model:
+
     soft_validates_presence_of :name
 
 And you will get methods like this:
+
     user.soft_valid?
     user.soft_errors
     user.progress_percent
