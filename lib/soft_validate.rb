@@ -17,6 +17,14 @@ module SoftValidate
       send :include, InstanceMethods
     end
 
+    def progress_complete_count
+      if (!defined?(self.soft_attributes))
+        raise "#{self.class.to_s} is not soft validated"
+      end
+      
+      self.soft_attributes.length
+    end
+
   end
 
   module InstanceMethods
@@ -40,6 +48,18 @@ module SoftValidate
       end
 
       errors
+    end
+
+    def progress_count
+      count = 0
+
+      self.soft_attributes.each do |a|
+        if !self.attributes[a.to_s].nil?
+          count += 1
+        end
+      end
+
+      count
     end
   end
 

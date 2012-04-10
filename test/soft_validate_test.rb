@@ -1,5 +1,7 @@
 require 'test_helper'
 
+require 'fixtures/non_validated_user'
+
 class SoftValidateTest < TEST_CASE
   fixtures :dumb_users
 
@@ -32,9 +34,27 @@ class SoftValidateTest < TEST_CASE
     assert response[:last_name].eql?("shouldn't be blank")
   end
 
-  test 'avalid user should return an empty error message response' do
+  test 'a valid user should return an empty error message response' do
     user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe', :last_name => 'schmoe')
     assert user.soft_errors.empty?
+  end
+
+  test 'The progress count should reflect the number of soft validated attributes that are populated' do
+    user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe')
+    assert user.progress_count == 1
+
+    user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe', :last_name => 'schmoe')
+    assert user.progress_count == 2
+  end
+
+  test 'The progress complete count should be the number of soft validated attributes' do
+    assert DumbUser.progress_complete_count == 2
+  end
+
+  test 'Calling #progress_complete_count on a non soft-validated class should raise an error' do
+    assert_raise RuntimeError do
+      NonValidatedUser.progress_complete_count
+    end
   end
 
   test 'we can instantiate a DumbUser' do
