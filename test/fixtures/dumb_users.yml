@@ -1,3 +1,10 @@
-existing:
+invalid:
   id: 1
   email: test@example.com
+
+
+valid:
+  id: 2
+  email: test@example.com
+  first_name: dumb
+  last_name: user

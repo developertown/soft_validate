@@ -16,6 +16,11 @@ class SoftValidateTest < TEST_CASE
     assert !DumbUser.new.soft_valid?
   end
 
+  test 'a fully valid user should return true to #soft_valid?' do
+    user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe', :last_name => 'schmoe')
+    assert user.soft_valid?
+  end
+
   test 'we can instantiate a DumbUser' do
     ::DumbUser.new({})
     assert true
