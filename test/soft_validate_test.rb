@@ -48,13 +48,18 @@ class SoftValidateTest < TEST_CASE
   end
 
   test 'The progress complete count should be the number of soft validated attributes' do
-    assert DumbUser.progress_complete_count == 2
+    assert DumbUser.new.progress_complete_count == 2
   end
 
   test 'Calling #progress_complete_count on a non soft-validated class should raise an error' do
     assert_raise RuntimeError do
       NonValidatedUser.progress_complete_count
     end
+  end
+
+  test 'Calling #progress_percent on a partially populated instance should return the right value' do
+    user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe')
+    assert user.progress_percent == 0.50
   end
 
   test 'we can instantiate a DumbUser' do

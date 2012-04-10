@@ -17,6 +17,13 @@ module SoftValidate
       send :include, InstanceMethods
     end
 
+    
+
+  end
+
+  module InstanceMethods
+    # any method placed here will apply to instaces, like @hickwall
+    
     def progress_complete_count
       if (!defined?(self.soft_attributes))
         raise "#{self.class.to_s} is not soft validated"
@@ -24,11 +31,6 @@ module SoftValidate
       
       self.soft_attributes.length
     end
-
-  end
-
-  module InstanceMethods
-    # any method placed here will apply to instaces, like @hickwall
     
     def soft_valid?
 
@@ -60,6 +62,10 @@ module SoftValidate
       end
 
       count
+    end
+
+    def progress_percent
+      self.progress_count.to_f / self.progress_complete_count.to_f
     end
   end
 
