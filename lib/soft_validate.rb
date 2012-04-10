@@ -25,10 +25,6 @@ module SoftValidate
     # any method placed here will apply to instaces, like @hickwall
     
     def progress_complete_count
-      if (!defined?(self.soft_attributes))
-        raise "#{self.class.to_s} is not soft validated"
-      end
-      
       self.soft_attributes.length
     end
     
