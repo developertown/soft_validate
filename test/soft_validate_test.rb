@@ -32,6 +32,11 @@ class SoftValidateTest < TEST_CASE
     assert response[:last_name].eql?("shouldn't be blank")
   end
 
+  test 'avalid user should return an empty error message response' do
+    user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe', :last_name => 'schmoe')
+    assert user.soft_errors.empty?
+  end
+
   test 'we can instantiate a DumbUser' do
     ::DumbUser.new({})
     assert true
