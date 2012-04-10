@@ -7,11 +7,11 @@ require "soft_validate/version"
 Gem::Specification.new do |s|
   s.name        = "soft_validate"
   s.version     = SoftValidate::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SoftValidate."
-  s.description = "TODO: Description of SoftValidate."
+  s.authors     = ["David Christiansen", "Jason Vasquez"]
+  s.email       = ["dave@developertown.com", "jason.vasquez@developertown.com"]
+  s.homepage    = "https://github.com/developertown/soft_validate"
+  s.summary     = "Makes it easy to suggest that certain fields be provided, LinkedIn profile style"
+  s.description = "Add softs_validate_presence_of :attr to your model and it will give you methods to figure out percent complete, missing fields, etc without preventing the record from being saved."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
