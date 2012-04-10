@@ -30,6 +30,17 @@ module SoftValidate
 
       true
     end
+
+    def soft_errors
+      errors = {}
+      self.soft_attributes.each do |a|
+        if self.attributes[a.to_s].nil?
+          errors[a] = "shouldn't be blank"
+        end
+      end
+
+      errors
+    end
   end
 
 end
