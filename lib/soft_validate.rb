@@ -5,8 +5,6 @@ module SoftValidate
   extend ActiveSupport::Concern
 
   module ClassMethods
-    # any method placed here will apply to classes, like Hickwall
-
     def soft_validates_presence_of(attr)
       cattr_accessor :soft_attributes
       self.soft_attributes ||= Array.new
