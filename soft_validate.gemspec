@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Makes it easy to suggest that certain fields be provided, LinkedIn profile style"
   s.description = "Add softs_validate_presence_of :attr to your model and it will give you methods to figure out percent complete, missing fields, etc without preventing the record from being saved."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.3"
