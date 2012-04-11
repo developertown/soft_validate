@@ -17,47 +17,25 @@ module SoftValidate
       send :include, InstanceMethods
     end
 
-    
-
   end
 
   module InstanceMethods
     # any method placed here will apply to instaces, like @hickwall
-    
+
     def progress_complete_count
       self.soft_attributes.length
     end
-    
+
     def soft_valid?
-
-      self.soft_attributes.each do |a|
-        return false if self.attributes[a.to_s].nil?
-      end
-
-      true
+      self.soft_attributes.all? { |a| !self.attributes[a.to_s].nil? }
     end
 
     def soft_errors
-      errors = {}
-      self.soft_attributes.each do |a|
-        if self.attributes[a.to_s].nil?
-          errors[a] = "shouldn't be blank"
-        end
-      end
-
-      errors
+      Hash[ self.soft_attributes.map { |a| [a, "shouldn't be blank"] if self.attributes[a.to_s].nil? } ]
     end
 
     def progress_count
-      count = 0
-
-      self.soft_attributes.each do |a|
-        if !self.attributes[a.to_s].nil?
-          count += 1
-        end
-      end
-
-      count
+      self.soft_attributes.count { |a| !self.attributes[a.to_s].nil? }
     end
 
     def progress_percent
