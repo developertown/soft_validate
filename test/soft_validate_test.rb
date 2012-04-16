@@ -63,9 +63,11 @@ class SoftValidateTest < TEST_CASE
   end
 
   test 'soft-validating a non-existent attribute should raise an error' do
-    assert_raise SoftValidateError do
+    error = assert_raise SoftValidateError do
       require 'fixtures/user_with_non_existent_validated_attr'
     end
+
+    assert error.message.match(/^Soft validated attribute does not exist/)
   end
 
 end
