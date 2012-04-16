@@ -1,0 +1,2 @@
+class SoftValidateError < StandardError
+end

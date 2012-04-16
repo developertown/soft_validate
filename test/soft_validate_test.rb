@@ -2,6 +2,7 @@ require 'test_helper'
 
 require 'fixtures/non_validated_user'
 
+
 class SoftValidateTest < TEST_CASE
   fixtures :dumb_users
 
@@ -59,6 +60,12 @@ class SoftValidateTest < TEST_CASE
   test 'we can instantiate a DumbUser' do
     ::DumbUser.new({})
     assert true
+  end
+
+  test 'soft-validating a non-existent attribute should raise an error' do
+    assert_raise SoftValidateError do
+      require 'fixtures/user_with_non_existent_validated_attr'
+    end
   end
 
 end

@@ -1,10 +1,16 @@
 require 'active_record'
 
+require 'soft_validate/soft_validate_error'
+
 module SoftValidate
   extend ActiveSupport::Concern
 
   module ClassMethods
     def soft_validates_presence_of(attr)
+      if !self.attribute_names.include?(attr.to_s)
+        raise SoftValidateError, "Soft validated attribute does not exist: #{attr}"
+      end
+
       cattr_accessor :soft_attributes
       self.soft_attributes ||= Array.new
       self.soft_attributes << attr
