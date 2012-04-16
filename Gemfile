@@ -15,3 +15,8 @@ gem 'activerecord'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :test do
+  # Required for travis-ci
+  gem 'rake'
+end

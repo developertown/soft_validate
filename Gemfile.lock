@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    soft_validate (0.0.1)
+    soft_validate (0.0.2)
       rails (~> 3.2.3)
 
 GEM
@@ -90,5 +90,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  rake
   soft_validate!
   sqlite3
