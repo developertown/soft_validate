@@ -1,3 +1,6 @@
+[![Build Status](https://secure.travis-ci.org/developertown/soft_validate.png)](http://travis-ci.org/developertown/soft_validate)
+
+
 Soft Validate
 =============
 
