@@ -1,7 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/developertown/soft_validate.png)](http://travis-ci.org/developertown/soft_validate)
-
-
-Soft Validate
+Soft Validate [![Build Status](https://secure.travis-ci.org/developertown/soft_validate.png)](http://travis-ci.org/developertown/soft_validate)
 =============
 
 Easily recommend fields be filled out in order for something to be considered complete (AKA LinkedIn profile progress)
