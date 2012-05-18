@@ -17,15 +17,15 @@ module SoftValidate
   end
 
   def soft_valid?
-    self.soft_attributes.all? { |a| !self.attributes[a.to_s].nil? }
+    self.soft_attributes.all? { |a| !self.attributes[a.to_s].blank? }
   end
 
   def soft_errors
-    Hash[ self.soft_attributes.map { |a| [a, "shouldn't be blank"] if self.attributes[a.to_s].nil? } ]
+    Hash[ self.soft_attributes.map { |a| [a, "shouldn't be blank"] if self.attributes[a.to_s].blank? } ]
   end
 
   def progress_count
-    self.soft_attributes.count { |a| !self.attributes[a.to_s].nil? }
+    self.soft_attributes.count { |a| !self.attributes[a.to_s].blank? }
   end
 
   def progress_percent

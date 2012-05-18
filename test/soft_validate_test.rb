@@ -34,6 +34,17 @@ class SoftValidateTest < TEST_CASE
     assert response[:last_name].eql?("shouldn't be blank")
   end
 
+  test 'an invalid user should return error messages for blank values, not just nils' do
+    user = DumbUser.new(:email => '', :first_name => '', :last_name => '')
+
+    response = user.soft_errors
+    assert !response.nil?
+    assert !response.empty?
+
+    assert response[:first_name].eql?("shouldn't be blank")
+    assert response[:last_name].eql?("shouldn't be blank")
+  end
+
   test 'a valid user should return an empty error message response' do
     user = DumbUser.new(:email => 'me@you.com', :first_name => 'joe', :last_name => 'schmoe')
     assert user.soft_errors.empty?
