@@ -90,5 +90,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  rake
   soft_validate!
   sqlite3
